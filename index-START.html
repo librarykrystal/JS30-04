@@ -40,6 +40,7 @@
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
     // pass in a function to .filter that decides which array items we keep
+    // .filter will return only the array items that match criteria
     const fifteenHundy = inventors.filter(function(inventor) {
       if(inventor.year >= 1500 && inventor.year < 1600)
       return true;
@@ -49,12 +50,33 @@
     const fifteenHundyRedux = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
     console.table(fifteenHundyRedux);
 
-    
+
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    // .map returns a NEW array of the same length that was fed in
+    const fullNames = inventors.map(inventor => inventor.first + ' ' + inventor.last);
+    console.log(fullNames);
+    // same can be returned using template strings instead of concat:
+    const fullNamesAgain = inventors.map(inventor => `${inventor.first} ${inventor.last}`);
+    console.log(fullNamesAgain);
+
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    // .sort takes two at a time and compares them,
+    // moving them up or down in an ordered array
+    // here, a is the first person and b is the second
+    const orderedOldies = inventors.sort(function(a, b) {
+      if(a.year > b.year) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    console.log('Oldest to youngest:', orderedOldies);
+    // Now, shortened to use an arrow func and ternary operator:
+    const orderedDeux = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+    console.table(orderedDeux);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
