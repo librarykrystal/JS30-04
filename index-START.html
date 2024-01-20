@@ -36,9 +36,20 @@
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
     
+
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
+    // pass in a function to .filter that decides which array items we keep
+    const fifteenHundy = inventors.filter(function(inventor) {
+      if(inventor.year >= 1500 && inventor.year < 1600)
+      return true;
+    });
+    console.table(fifteenHundy);  // just like .log, but laid out in a table!
+    // Now, the same solution, but written in one line with an arrow func:
+    const fifteenHundyRedux = inventors.filter(inventor => (inventor.year >= 1500 && inventor.year < 1600));
+    console.table(fifteenHundyRedux);
 
+    
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
 
