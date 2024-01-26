@@ -78,6 +78,7 @@
     const orderedDeux = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
     console.table(orderedDeux);
 
+
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
     // .reduce can build on each thing in the array, like an old school for loop
@@ -90,6 +91,24 @@
 
 
     // 5. Sort the inventors by years lived
+    const longestLife = inventors.sort(function(a, b) {
+      const currentInv = a.passed - a.year;
+      const nextInv = b.passed - b.year;
+      if(currentInv > nextInv) {
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+    console.log('sorted by years lived:', longestLife);
+    // ternary instead of longform:
+    const longestLife2 = inventors.sort(function(a, b) {
+      const currentInv = a.passed - a.year;
+      const nextInv = b.passed - b.year;
+      return currentInv > nextInv ? -1 : 1;
+    });
+    console.log('sorted by years lived AGAIN:', longestLife2);
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
